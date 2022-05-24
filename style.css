@@ -1,0 +1,24 @@
+html {
+  font-family: "Courier New", Courier, monospace;
+}
+
+li {
+  list-style: none;
+}
+
+.book-form {
+  margin-left: 30px;
+}
+
+#button {
+  margin-top: 10px;
+}
+
+.delete {
+  border-radius: 10px;
+  background: #36b37e;
+}
+
+#submit {
+  margin-top: 10px;
+}
