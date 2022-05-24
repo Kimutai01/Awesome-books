@@ -57,6 +57,7 @@ document.querySelector('.book-form').addEventListener('submit', (e) => {
   const author = document.querySelector('#author').value;
 
   if (title === '' || author === '') {
+    // eslint-disable-next-line no-alert
     alert('Please fill the fields');
   } else {
     const book = new Book(title, author);
