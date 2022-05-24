@@ -1,75 +1,45 @@
-function Book(title, author) {
-  this.title = title;
-  this.author = author;
-}
-const findBook = () => {
-  let books;
-  if (localStorage.getItem('books') === null) {
-    books = [];
-  } else {
-    books = JSON.parse(localStorage.getItem('books'));
+// Dom elements
+
+const form = document.querySelector('.book-form');
+const list = document.querySelector('.list');
+const removeBtn = document.querySelector('.delete');
+
+const books = JSON.parse(localStorage.getItem('books')) || [];
+
+class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
   }
-  return books;
+}
+
+const displayBook = (book) => {
+  const ulI = document.createElement('ul');
+  ulI.innerHTML = `
+  
+  <li class="list-elements">"${book.title}" by ${book.author} </li>
+  <button class="delete">remove</button>
+  `;
+  list.appendChild(ulI);
 };
-const addBook = (book) => {
-  const books = findBook();
+
+books.forEach(displayBook);
+
+form.addEventListener('submit', (e) => {
+  const title = document.querySelector('#title');
+  const author = document.querySelector('#author');
+  e.preventDefault();
+  const book = new Book(title.value, author.value);
   books.push(book);
   localStorage.setItem('books', JSON.stringify(books));
-};
-const removeBook = (title) => {
-  const books = findBook();
-  books.forEach((book, i) => {
-    if (book.title === title) {
-      books.splice(i, 1);
-    }
-  });
-  localStorage.setItem('books', JSON.stringify(books));
-};
 
-const deleteBook = (el) => {
-  if (el.classList.contains('delete')) {
-    el.parentElement.remove();
-  }
-};
-const addBookToList = (book) => {
-  const listI = document.querySelector('.list');
-  const ulI = document.createElement('ul');
-
-  ulI.innerHTML = `
-        <li>${book.title}</li>
-        <li>${book.author}</li>
-        <button class="delete">remove</button>
-        <hr>
-        `;
-  listI.appendChild(ulI);
-};
-
-const displayBook = () => {
-  const books = findBook();
-
-  books.forEach((book) => addBookToList(book));
-};
-
-document.addEventListener('DOMContentLoaded', displayBook());
-
-document.querySelector('.book-form').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const title = document.querySelector('#title').value;
-  const author = document.querySelector('#author').value;
-
-  if (title === '' || author === '') {
-    // eslint-disable-next-line no-alert
-    alert('Please fill the fields');
-  } else {
-    const book = new Book(title, author);
-    addBookToList(book);
-    addBook(book);
-    document.querySelector('#title').value = '';
-    document.querySelector('#author').value = '';
-  }
+  displayBook(book);
+  title.value = '';
+  author.value = '';
 });
 
 document.querySelector('.list').addEventListener('click', (e) => {
-  deleteBook(e.target);
-  removeBook(e.target.parentElement.firstElementChild.textContent);
+  if (e.target.classList.contains('delete')) {
+    e.target.parentElement.remove();
+  }
 });
