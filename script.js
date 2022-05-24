@@ -39,6 +39,7 @@ const addBookToList = (book) => {
         <li>${book.title}</li>
         <li>${book.author}</li>
         <button class="delete">remove</button>
+        <hr>
         `;
   listI.appendChild(ulI);
 };

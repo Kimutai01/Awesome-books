@@ -1,3 +1,7 @@
+html {
+  font-family: "Courier New", Courier, monospace;
+}
+
 li {
   list-style: none;
 }
@@ -8,6 +12,10 @@ li {
 
 #button {
   margin-top: 10px;
+}
+.delete {
+  border-radius: 10px;
+  background: #36b37e;
 }
 
 #submit {
