@@ -1,24 +1,58 @@
-html {
-  font-family: "Courier New", Courier, monospace;
+.contacts {
+  display: none;
 }
 
-li {
-  list-style: none;
+.books {
+  display: none;
 }
 
-.book-form {
-  margin-left: 30px;
+.list-item {
+  display: flex;
+  gap: 10px;
+  margin-left: 300px;
+  width: 700px;
+  border: 1px solid black;
+  justify-content: space-between;
 }
 
-#button {
-  margin-top: 10px;
+.list-item:nth-child(odd) {
+  background-color: rgb(218, 218, 218);
 }
 
-.delete {
-  border-radius: 10px;
-  background: #36b37e;
+.description {
+  font-size: 20px;
+  margin-top: 15px;
 }
 
-#submit {
-  margin-top: 10px;
+.delete-button {
+  background: red;
+  margin-top: 8px;
+  height: 40px;
+  margin-right: 5px;
+}
+
+#dataForm {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+}
+
+input {
+  width: 60%;
+  margin-bottom: 10px;
+}
+
+.btn {
+  -webkit-box-shadow: 2px 4px 7px 2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 4px 7px 2px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 4px 7px 2px rgba(0, 0, 0, 0.75);
+  border: 2px solid black;
+  margin-top: 5px;
+}
+
+.contact-list {
+  margin-left: 500px;
 }
